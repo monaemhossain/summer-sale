@@ -13,8 +13,9 @@ function addPrice(target){
     const listText = target.childNodes[3].childNodes[3].innerText;
 // new list item
     const li = document.createElement('li');
+    li.className = "item";
     li.innerText = listText;
-    const cartItem = document.getElementById('cart-item');
+    const cartItem = getValues('cart-item');
     cartItem.appendChild(li);
 // total amount output
     total = total + getPriceNumber;
@@ -44,4 +45,17 @@ function addDiscount(target){
     const totalPriceNumber = parseFloat(totalPrice);
     const afterDiscount = totalPriceNumber - totalDiscount;
     getValues('grand-total').innerText = afterDiscount.toFixed(2);
+}
+
+function resetCart(){
+    
+    getValues('coupon-code').value = '';
+    getValues('total-price').innerText = 0.00;
+    getValues('total-discount').innerText = 0.00;
+    getValues('grand-total').innerText = 0.00;
+    const removableList = document.querySelectorAll('#cart-item li');
+
+    for(let i = 0; i<removableList.length; i++){
+        removableList[i].remove();
+    }
 }
