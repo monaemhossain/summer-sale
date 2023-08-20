@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
-<body class="bg-[#f8f8f8] px-4">
+<body class="bg-[#f8f8f8]">
     <!-- header section -->
-    <header class="bg-[#F9F6E2] py-6">
+    <header class="bg-[#F9F6E2] py-6 px-4">
         <div class="max-w-screen-xl mx-auto lg:grid grid-cols-2 items-center justify-center">
             <div class="text-center space-y-9">
                 <h3 class="text-3xl font-semibold">---SALE FEVER---</h3>
@@ -37,7 +37,7 @@
         </div>
     </header>
 
-    <main class="max-w-screen-xl mx-auto py-28 ">
+    <main class="max-w-screen-xl mx-auto py-28 px-4">
         <!-- Product Section -->
 
         <!-- Kitchenware -->
@@ -59,7 +59,7 @@
                                 <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                                 <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
                             </div>
-                            <h2 class="card-title font-semibold">K. Accessories</h2>
+                            <h2 class="card-title font-semibold text-lg">K. Accessories</h2>
                             <p class="text-gray-400"><span>39.00</span> TK</p>
 
                         </div>
@@ -76,7 +76,7 @@
                                 <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
                                 <input type="radio" name="rating-3" class="mask mask-star-2 bg-orange-400" />
                             </div>
-                            <h2 class="card-title font-semibold">K. Accessories</h2>
+                            <h2 class="card-title font-semibold text-lg">K. Accessories</h2>
                             <p class="text-gray-400"><span>25.00</span> TK</p>
 
                         </div>
@@ -84,7 +84,7 @@
 
                     <div class="card bg-white p-5 rounded-lg hover:cursor-pointer" onclick="addPrice(this)">
                         <figure class="bg-[#f3f3f3] px-20 py-5 rounded-md"><img src="/images/prod3.png"
-                                alt="Home Cooker" class="w-[150px] h-[175px] min-w-fit" /></figure>
+                                alt="Home Cooker" class="w-[150px] h-[175px]" /></figure>
                         <div class="card-body pb-0 gird items-center justify-center text-center">
                             <div class="rating">
                                 <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
@@ -93,7 +93,7 @@
                                 <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" checked />
                                 <input type="radio" name="rating-4" class="mask mask-star-2 bg-orange-400" />
                             </div>
-                            <h2 class="card-title font-semibold">Home Cooker</h2>
+                            <h2 class="card-title font-semibold text-lg">Home Cooker</h2>
                             <p class="text-gray-400"><span>49.00</span> TK</p>
 
                         </div>
@@ -104,25 +104,31 @@
             </div>
 
             <!-- Cart Section -->
-            <section class="lg:order-2 order-1 space-y-5 gap-0
-                ">
+            <section class="lg:order-2 order-1 space-y-5 gap-0 relative max-lg:mb-10 lg:w-full md:w-2/3 w-full mx-auto">
                 <div class="bg-white rounded-lg p-6 space-y-4">
-                    <h2 class="text-2xl font-semibold">Have coupon?</h2>
+                    <h2 class="text-xl font-semibold">Have coupon?</h2>
                     <div class="join w-full">
                         <input class="input input-bordered join-item focus:outline-none w-full "
                             placeholder="Coupon Code" />
-                        <button class="btn bg-pink-600 text-white join-item py-4">Apply</button>
+                        <button id="add-discount" onclick="addDiscount(this)"
+                            class="btn bg-[#e527b2] text-white join-item py-4 hover:bg-black hover:text-white hover border-[#e527b2] transition-all">Apply</button>
                     </div>
                 </div>
-                <div class="bg-white rounded-lg p-6 space-y-4">
-                    <ol id="cart-item" class="font-medium text-2xl list-decimal pl-6"></ol>
+                <div class="bg-white rounded-lg p-6">
+                    <ol id="cart-item" class="font-medium text-xl list-decimal space-y-4 pl-6"></ol>
 
-                    <div class=""></div>
-                    <ol class="font-medium text-2xl">
-                        <li>Total price: <span id="total-price">00</span></li>
-                        <li> Discount : 51.40TK</li>
-                        <li>Total: 205.60 TK</li>
+                    <div class="divider"></div>
+
+
+                    <ol class="font-medium text-xl space-y-4">
+                        <li>Total price: <span class="text-gray-500"><span id="total-price">0.00</span> TK</span></li>
+                        <li> Discount : <span class="text-gray-500"><span id="total-discount">0.00</span> TK</span></li>
+                        <li>Total: <span class="text-gray-500"><span id="grand-total">0.00</span> TK</span></li>
                     </ol>
+                    <div class="divider"></div>
+                    
+                        <button class="btn btn-secondary absolute left-1/2 -translate-x-1/2 w-11/12">Secondary</button>
+                    
                 </div>
             </section>
         </div>
