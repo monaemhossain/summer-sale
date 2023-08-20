@@ -1,12 +1,9 @@
-function cartTotals(id){
+function getValues(id){
     const totalAmount = document.getElementById(id);
     return totalAmount;
 }
-const changeValue = cartTotals('total-price');
-
-
-
 let total = 0;
+let totalDiscount = 0;
 
 function addPrice(target){
     const getPrice = target.childNodes[3].childNodes[5].innerText.split(' ')[0];
@@ -21,22 +18,30 @@ function addPrice(target){
     cartItem.appendChild(li);
 // total amount output
     total = total + getPriceNumber;
-    cartTotals('total-price').innerText = total.toFixed(2);
-    cartTotals('grand-total').innerText = afterDiscount.toFixed(2);
+    getValues('total-price').innerText = total.toFixed(2);
+
+// Total Price 
+    if(getValues('coupon-code').value == "SELL200"){
+        totalDiscount = total * 0.2;
+        getValues('total-discount').innerText = totalDiscount.toFixed(2);
+        getValues('grand-total').innerText = total - totalDiscount;
+    }else if(getValues('coupon-code').value !== "SELL200"){
+        getValues('total-discount').innerText = 0.00;
+        getValues('grand-total').innerText = total;
+    }
 }
 
 
 
-let totalDiscount = 0;
-function addDiscount(value){
-    if(value.parentNode.childNodes[1].value == "SELL200"){
+function addDiscount(target){
+    if(getValues('coupon-code').value == "SELL200"){
       totalDiscount = total * 0.2;
-      cartTotals('total-discount').innerText = totalDiscount.toFixed(2);
+      getValues('total-discount').innerText = totalDiscount.toFixed(2);
     }else{
         alert("invalid coupon");
     }
-    const totalPrice = cartTotals('total-price').innerText;
+    const totalPrice = getValues('total-price').innerText;
     const totalPriceNumber = parseFloat(totalPrice);
     const afterDiscount = totalPriceNumber - totalDiscount;
-    cartTotals('grand-total').innerText = afterDiscount.toFixed(2);
+    getValues('grand-total').innerText = afterDiscount.toFixed(2);
 }
