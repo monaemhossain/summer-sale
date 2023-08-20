@@ -22,7 +22,21 @@ function addPrice(target){
 // total amount output
     total = total + getPriceNumber;
     cartTotals('total-price').innerText = total.toFixed(2);
+    cartTotals('grand-total').innerText = afterDiscount.toFixed(2);
 }
 
 
 
+let totalDiscount = 0;
+function addDiscount(value){
+    if(value.parentNode.childNodes[1].value == "SELL200"){
+      totalDiscount = total * 0.2;
+      cartTotals('total-discount').innerText = totalDiscount.toFixed(2);
+    }else{
+        alert("invalid coupon");
+    }
+    const totalPrice = cartTotals('total-price').innerText;
+    const totalPriceNumber = parseFloat(totalPrice);
+    const afterDiscount = totalPriceNumber - totalDiscount;
+    cartTotals('grand-total').innerText = afterDiscount.toFixed(2);
+}
