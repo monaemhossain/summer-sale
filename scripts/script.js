@@ -32,9 +32,17 @@ function addPrice(target) {
     const afterDiscount = totalPriceNumber - totalDiscount;
     getElement('grand-total').innerText = afterDiscount.toFixed(2);
 
+    // enable dead coupon button
+    if (total >= 200) {
+        getElement('apply-discount').removeAttribute('disabled');
+    } else {
+        getElement('apply-discount').setAttribute('disabled', true)
+    }
     // enable dead make purchase button
     if (total > 0) {
         getElement('purchase-btn').removeAttribute('disabled');
+    } else {
+
     }
 
 }
@@ -65,6 +73,7 @@ function resetCart() {
     getElement('total-price').innerText = resetValue.toFixed(2);
     getElement('total-discount').innerText = resetValue.toFixed(2);
     getElement('grand-total').innerText = resetValue.toFixed(2);
+    getElement('purchase-btn').setAttribute('disabled', true)
 
     total = 0;
     totalDiscount = 0;
@@ -74,17 +83,6 @@ function resetCart() {
 
     for (let i = 0; i < removableList.length; i++) {
         removableList[i].remove();
-    }
-}
-
-// enable dead coupon button
-function enableBtn() {
-    const couponInput = getElement('coupon-code')
-    const couponInputValue = couponInput.value;
-    if (couponInputValue === 'SELL200') {
-        getElement('apply-discount').removeAttribute('disabled');
-    } else {
-        getElement('apply-discount').setAttribute('disabled', true)
     }
 }
 
