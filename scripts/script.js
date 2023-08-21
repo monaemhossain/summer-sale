@@ -44,7 +44,7 @@ function addDiscount(target) {
     if (getElement('coupon-code').value == "SELL200") {
         totalDiscount = total * 0.2;
         getElement('total-discount').innerText = totalDiscount.toFixed(2);
-        
+
         target.parentNode.className = "join w-full text-lime-600";
         target.parentNode.childNodes[1].className = "input input-bordered join-item focus:outline-none border-lime-600 w-full"
     } else {
@@ -84,7 +84,7 @@ function enableBtn() {
     if (couponInputValue === 'SELL200') {
         getElement('apply-discount').removeAttribute('disabled');
     } else {
-        // getElement('apply-discount').setAttribute('disabled', true)
+        getElement('apply-discount').setAttribute('disabled', true)
     }
 }
 
